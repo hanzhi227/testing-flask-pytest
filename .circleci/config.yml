@@ -13,17 +13,17 @@ jobs:
           docker build -t hanzhi227/flask-circleci-test:$TAG
           echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
           docker push hanzhi227/flask-circleci-test:$TAG
-      -
-  test:
-    docker:
-      - image: hanzhi227/flask-circleci-test:$TAG
-    steps:
-      - checkout
-      - python/install-packages:
-          pkg-manager: pip
-      - run:
-          name: Run tests
-          command: pytest
+#      -
+#  test:
+#    docker:
+#      - image: hanzhi227/flask-circleci-test:$TAG
+#    steps:
+#      - checkout
+#      - python/install-packages:
+#          pkg-manager: pip
+#      - run:
+#          name: Run tests
+#          command: pytest
 workflows:
   build-push-docker:
     jobs:
