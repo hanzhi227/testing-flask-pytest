@@ -28,6 +28,7 @@ workflows:
   build-push-docker-and-test:
     jobs:
       - build
-      - test
+      - test:
           requires:
             - build
+
