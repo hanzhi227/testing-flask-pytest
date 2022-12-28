@@ -9,14 +9,14 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: |
-          TAG=0.1.$CIRCLE_BUILD_NUM
-          docker build -t hanzhi227/flask-circleci-test:$TAG .
+          TAG=0.1
+          docker build -t hanzhi227/flask-circleci-test:0.1 .
           echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
           docker push hanzhi227/flask-circleci-test:$TAG
 #      -
   test:
     docker:
-      - image: hanzhi227/flask-circleci-test:$TAG
+      - image: hanzhi227/flask-circleci-test:0.1
     steps:
       - checkout
       - python/install-packages:
