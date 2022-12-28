@@ -16,7 +16,7 @@ jobs:
 #      -
   test:
     docker:
-      - image: hanzhi227/flask-circleci-test:0.1.5
+      - image: hanzhi227/flask-circleci-test:$TAG
     steps:
       - checkout
       - python/install-packages:
@@ -25,9 +25,7 @@ jobs:
           name: Run tests
           command: pytest
 workflows:
-  build-push-docker:
+  build-push-docker-and-test:
     jobs:
       - build
-  test:
-    jobs:
       - test
